@@ -92,6 +92,6 @@ public class Item {
 				", defence=" + defence + 
 				", level=" + level + 
 				", itemName=" + itemName + 
-				", attack=" + attack + "]";
+				", itemValue=" + itemValue + "]";
 	}	
 }
