@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -21,7 +20,7 @@ public class ItemRepositoryImpl implements ItemRepository {
 	private JdbcTemplate jdbc;
 		
 	private static final String SQL_INSERT = "insert into Items (itemId, attack, defence, itemLevel, itemType, itemName, itemValue) values (?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String SQL_UPDATE = "update Items set attack=?, defence=?, itemLevel=?, itemType=?, itemName=? where itemId=?";
+	private static final String SQL_UPDATE = "update Items set attack=?, defence=?, itemLevel=?, itemType=?, itemName=?, itemValue where itemId=?";
 	private static final String SQL_FIND_ONE = "select from Items where itemId = ?";
 	private static final String SQL_FIND_ALL = "select * from Items order by itemType";	
 	private static final String SQL_DELETE_ONE = "delete from Items where itemId = ?";
@@ -71,5 +70,4 @@ public class ItemRepositoryImpl implements ItemRepository {
 	public int deleteOne(Long itemId) {
 		return jdbc.update(SQL_DELETE_ONE, itemId);			
 	}
-
 }
