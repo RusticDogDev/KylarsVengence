@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.cit.kv.domain.Item;
 
-public interface itemRepository {
+public interface ItemRepository {
 	List<Item> findAll();
 	Item findOne(Long itemId);
-	Item save (Item ur);
-	int update(Item ur);
+	Item save (Item it);
+	int update(Item it);
 	int deleteOne(Long itemId);
 }

@@ -11,13 +11,13 @@ public class Item {
 		
 	private Long itemId;
 	private String itemType;
-	private Long attack;
-	private Long defence;
+	private int attack;
+	private int defence;
 	private int level;
 	private String itemName;
 	private Long itemValue;
 	
-	public Item(Long itemId, String itemType, Long attack, Long defence, int level, String itemName, Long itemValue) {
+	public Item(Long itemId, String itemType, int attack, int defence, int level, String itemName, Long itemValue) {
 		super();
 		this.itemId = itemId;
 		this.itemType = itemType;
@@ -52,19 +52,19 @@ public class Item {
 		this.itemName = itemName;
 	}
 
-	public Long getAttack() {
+	public int getAttack() {
 		return attack;
 	}
 
-	public void setAttack(Long attack) {
+	public void setAttack(int attack) {
 		this.attack = attack;
 	}
 
-	public Long getDefence() {
+	public int getDefence() {
 		return defence;
 	}
 
-	public void setDefence(Long defence) {
+	public void setDefence(int defence) {
 		this.defence = defence;
 	}
 

@@ -1,4 +1,4 @@
-CREATE TABLE user (
+CREATE TABLE User (
    id		identity,
    fName	VARCHAR(255) NOT NULL,
    lName	VARCHAR(255) NOT NULL,   	
@@ -8,13 +8,13 @@ CREATE TABLE user (
    PRIMARY KEY(id)
 );
 
-CREATE TABLE itemsOwned (   
+CREATE TABLE ItemsOwned (   
    itemId		BIGINT NULL,
    id			BIGINT NULL,
    PRIMARY KEY(id, itemId)
 );
 
-CREATE TABLE items (
+CREATE TABLE Items (
    itemId		identity,
    attack		INT NOT NULL,
    defence		INT NOT NULL,

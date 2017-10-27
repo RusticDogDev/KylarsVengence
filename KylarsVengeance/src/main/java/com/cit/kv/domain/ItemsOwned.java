@@ -1,10 +1,10 @@
 package com.cit.kv.domain;
 
-public class itemsOwned {
+public class ItemsOwned {
 	private long itemId;
 	private long id;	
 	
-	public itemsOwned(Long itemId, Long id){
+	public ItemsOwned(Long itemId, Long id){
 		super();
 		this.setItemId(itemId);
 		this.setId(id);
