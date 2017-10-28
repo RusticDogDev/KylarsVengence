@@ -13,7 +13,7 @@ public class User {
 	private int level;
 	private Long balance;
 	
-	public User(Long id, String userType, String fName, String lName, int level, Long balance) {
+	public User(Long id, String fName, String lName, String userType, int level, Long balance) {
 		super();
 		this.id = id;
 		this.userType = userType;

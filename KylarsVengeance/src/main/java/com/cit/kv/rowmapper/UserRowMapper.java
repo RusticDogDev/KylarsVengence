@@ -1,7 +1,9 @@
 package com.cit.kv.rowmapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.springframework.jdbc.core.RowMapper;
+
 import com.cit.kv.domain.User;
 
 public class UserRowMapper implements RowMapper<User> {
