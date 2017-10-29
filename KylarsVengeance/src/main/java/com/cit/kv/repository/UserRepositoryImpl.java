@@ -23,6 +23,7 @@ public class UserRepositoryImpl implements UserRepository{
 	private static final String SQL_INSERT = "insert into User (id, userName, password, userType, level, balance) values (?, ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "update User set userName=?, password=?, userType=?, level=?, balance =? where id=?";
 	private static final String SQL_FIND_ONE = "select * from User where id = ?";
+	private static final String SQL_FIND_ONE_UNAME = "select * from User where userName = ?";
 	private static final String SQL_FIND_ALL = "select * from User order by userType";	
 	private static final String SQL_DELETE_ONE = "delete from User where id = ?";
 	
@@ -34,6 +35,11 @@ public class UserRepositoryImpl implements UserRepository{
 	@Override
 	public User findOne(Long id) {
 		return jdbc.queryForObject(SQL_FIND_ONE, new UserRowMapper(), id);	
+	}
+	
+	@Override
+	public User findOneByUserName(String userName) {
+		return jdbc.queryForObject(SQL_FIND_ONE_UNAME, new UserRowMapper(), userName);	
 	}
 
 	@Override

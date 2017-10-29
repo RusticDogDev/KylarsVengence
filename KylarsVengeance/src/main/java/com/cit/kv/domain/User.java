@@ -7,8 +7,6 @@ public class User {
 		Knight,
 		Wizard,
 		Priest,
-		Spy,
-		Thief,
 		Archer,
 		Berserker
 	}
