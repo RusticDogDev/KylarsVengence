@@ -20,8 +20,8 @@ public class UserRepositoryImpl implements UserRepository{
 	@Autowired
 	private JdbcTemplate jdbc;
 		
-	private static final String SQL_INSERT = "insert into User (id, fName, lName, userType, level, balance) values (?, ?, ?, ?, ?, ?)";
-	private static final String SQL_UPDATE = "update User set fName=?, lName=?, userType=?, level=?, balance =? where id=?";
+	private static final String SQL_INSERT = "insert into User (id, userName, password, userType, level, balance) values (?, ?, ?, ?, ?, ?)";
+	private static final String SQL_UPDATE = "update User set userName=?, password=?, userType=?, level=?, balance =? where id=?";
 	private static final String SQL_FIND_ONE = "select * from User where id = ?";
 	private static final String SQL_FIND_ALL = "select * from User order by userType";	
 	private static final String SQL_DELETE_ONE = "delete from User where id = ?";
@@ -45,8 +45,8 @@ public class UserRepositoryImpl implements UserRepository{
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(SQL_INSERT, new String[]{"id"});
 				ps.setLong(1, ur.getId());
-				ps.setString(2, ur.getfName());
-				ps.setString(3, ur.getlName());
+				ps.setString(2, ur.getUserName());
+				ps.setString(3, ur.getPassword());
 				ps.setString(4, ur.getUserType());
 				ps.setInt(5, ur.getLevel());
 				ps.setLong(6, ur.getBalance());				
@@ -63,7 +63,7 @@ public class UserRepositoryImpl implements UserRepository{
 
 	@Override
 	public int update(User ur) {
-		return jdbc.update(SQL_UPDATE, ur.getId(), ur.getfName(), ur.getlName(), ur.getUserType(), ur.getLevel(), ur.getBalance());
+		return jdbc.update(SQL_UPDATE, ur.getId(), ur.getUserName(), ur.getPassword(), ur.getUserType(), ur.getLevel(), ur.getBalance());
 	}
 
 	@Override

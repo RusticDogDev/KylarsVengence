@@ -1,11 +1,11 @@
 CREATE TABLE User (
    id		identity,
-   fName	VARCHAR(255) NOT NULL,
-   lName	VARCHAR(255) NOT NULL,   	
-   userType VARCHAR(255) NOT NULL, 
+   userName	VARCHAR(255) NOT NULL,
+   password	VARCHAR(255) NOT NULL,   	
+   userType VARCHAR(255) NULL, 
    level	INT NOT NULL,   
    balance	BIGINT NULL,    	
-   PRIMARY KEY(id)
+   PRIMARY KEY(ID)
 );
 
 CREATE TABLE ItemsOwned (   

@@ -6,15 +6,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.cit.kv.service.Login;
+import com.cit.kv.service.LoginService;
+import com.cit.kv.service.MenuService;
 
 @EnableAutoConfiguration
 @SpringBootApplication
 
 public class KylarsVengeanceApplication implements CommandLineRunner{
-	@Autowired
-	private Login login;
 	
+	@Autowired
+	private LoginService login;
+	@Autowired
+	private MenuService menu;
+	private Boolean isLoggedIn;
+	private Boolean isNewUser;
 	
 	public static void main(String[] args) throws Exception {
 		SpringApplication app = new SpringApplication(KylarsVengeanceApplication.class);       
@@ -23,9 +28,9 @@ public class KylarsVengeanceApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		String[] myStringArray = new String[2];
-		myStringArray = login.getlogindetails();
-		System.out.println("Stuff:" + myStringArray[0]);
+		String[] userLoggedIn = login.getlogindetails();
+		isLoggedIn = true;
+		isNewUser = Boolean.valueOf(userLoggedIn[2]);		
+		menu.runmenu(userLoggedIn[0], isNewUser);
 	}
 }

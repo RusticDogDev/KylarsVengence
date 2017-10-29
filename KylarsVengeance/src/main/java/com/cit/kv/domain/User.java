@@ -3,22 +3,28 @@ package com.cit.kv.domain;
 public class User {
 	public enum UserType
 	{
-		admin,
-		customer
+		Goblin,
+		Knight,
+		Wizard,
+		Priest,
+		Spy,
+		Thief,
+		Archer,
+		Berserker
 	}
 	private Long id;
-	private String userType;
-	private String fName;
-	private String lName;
+	private String userName;
+	private String password;
+	private String userType;	
 	private int level;
 	private Long balance;
 	
-	public User(Long id, String fName, String lName, String userType, int level, Long balance) {
+	public User(Long id, String userName, String password, String userType, int level, Long balance) {
 		super();
 		this.id = id;
+		this.setUserName(userName);
+		this.setPassword(password);
 		this.userType = userType;
-		this.fName = fName;
-		this.lName = lName;
 		this.level = level;
 		this.balance = balance;	
 	}
@@ -37,22 +43,6 @@ public class User {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
-	}
-
-	public String getfName() {
-		return fName;
-	}
-
-	public void setfName(String fName) {
-		this.fName = fName;
-	}
-
-	public String getlName() {
-		return lName;
-	}
-
-	public void setlName(String lName) {
-		this.lName = lName;
 	}
 
 	public int getLevel() {
@@ -75,9 +65,25 @@ public class User {
 	public String toString() {
 		return "User [id=" + id 
 				+ ", userType=" + userType
-				+ ", fName=" + fName
-				+ ", lName=" + lName
+				+ ", userName=" + userName
+				+ ", password=" + password
 				+ ", level=" + level
 				+ ", balance=" + balance + "]";
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}		
 }
