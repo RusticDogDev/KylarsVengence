@@ -30,7 +30,7 @@ public class NewUserService {
 	private final int MAX = 6;
 	private final int MIN = 1;
 	
-	public void  runmenu(String userName) throws InterruptedException {
+	public void  runNewUser(String userName) throws InterruptedException {
 		
 		player = userRepo.findOneByUserName(userName);
 		Scanner keyboard = new Scanner(System.in);		

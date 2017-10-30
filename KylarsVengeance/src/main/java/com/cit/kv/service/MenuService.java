@@ -1,5 +1,6 @@
 package com.cit.kv.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,42 +29,50 @@ public class MenuService
 	private User player;
 	private Item item;	
 	private List<ItemsOwned> ownedList;
+	private List<Item> itemsList = new ArrayList<Item>();
 	private int moveCount;
 	private boolean isInRound;
 	private int input;
-	private boolean isInputValid;
-	private final int MIN = 1;
-	private final int MAX = 4;	
+	private boolean isInputValid;	
 	
 	public void runMenu(String userName) throws InterruptedException {		
 		while(true)
 		{			
 			showMenu();
-			hudService.runHud(userName);			
-			player = userRepo.findOneByUserName(userName);				
+			hudService.runHud(userName);						
+			player = userRepo.findOneByUserName(userName);	
+			ownedList = ownedRepo.findAllByUser(player.getId());						
+			for(int i = 0; i < ownedList.size(); i++)
+			{
+				item = itemRepo.findOne(ownedList.get(i).getItemId());
+				itemsList.add(item);
+			}
 			if(input == 1)
 			{
 				this.round(player);				
 			}
 			else if(input == 2)
 			{
-				this.buyEquipment(player);
+				this.buyEquipment();
 				moveCount ++;
 			}
 			else if(input == 3)
 			{
-				this.sellEquipment(player);
+				this.sellEquipment();
 				moveCount ++;
 			}
 			else
 			{
-				this.upgradeEquipment(player);
+				this.upgradeEquipment();
 				moveCount ++;
 			}		
 		}		
 	}
 	public int showMenu() {
-		Scanner keyboard = new Scanner(System.in);	
+		final int MIN = 1;
+		final int MAX = 4;	
+		Scanner keyboard = new Scanner(System.in);
+		
 		while(!isInputValid)
 		{
 			System.out.println("Main Menu");
@@ -102,24 +111,59 @@ public class MenuService
 		else{
 			isInRound = false;
 			int level = player.getLevel() +1;
-			long addedBalance = 5 * player.getLevel();
+			long addedBalance = 2 * player.getLevel();
 			player.setLevel(level);
-			player.setLevel(level);
+			player.setBalance(addedBalance + player.getLevel());
 			System.out.println("You have fought well " + 
 								player.getUserName() +
 								" You have leveled up to Level" + 
 								player.getLevel() + "!/nYou've earned " + addedBalance +" Kubits");
 		}
 	}
-	private void buyEquipment(User player) {
-		ownedList = ownedRepo.findAllByUser(player.getId());
+	private void buyEquipment() {
+				
+	}
+	private void sellEquipment() {
+		
 		
 	}
-	private void sellEquipment(User player) {
-		ownedList = ownedRepo.findAllByUser(player.getId());
-		
-	}
-	private void upgradeEquipment(User player) {
-		ownedList = ownedRepo.findAllByUser(player.getId());		
+	private void upgradeEquipment() {			
+		int cost = 5;
+		int attdef = 3;
+		int choice;
+		final int MIN = 1;
+		final int MAX = 5;	
+		boolean validChoice = false;
+		String equipment = " Items available to ugrade:";
+		Scanner keyboard = new Scanner(System.in);
+		while(!validChoice)
+		{
+			for(int i = 0; i < itemsList.size(); i++ ){
+				equipment += "("+ i +") Type: " + itemsList.get(i).getItemType() + " Level: " + itemsList.get(i).getItemLevel()
+						+ " Damage: " + itemsList.get(i).getAttack() + " Defence: " + itemsList.get(i).getDefence() + " Kubits needed to upgrade " + cost * itemsList.get(i).getItemLevel() +" \n";
+			}							
+			System.out.println(equipment + " (5) Exit\n");
+			choice = keyboard.nextInt();
+			if(choice >= MIN && choice <= MAX ){				
+				cost = cost * itemsList.get(choice).getItemLevel();	
+				attdef = attdef * itemsList.get(choice).getItemLevel();	
+				if(player.getBalance() > cost)
+				{
+					player.setBalance(player.getBalance() - cost);
+					item = itemsList.get(choice);
+					item.setItemLevel(item.getItemLevel() + 1);
+					item.setAttack(item.getAttack() + attdef);
+					item.setDefence(item.getDefence() + attdef);					
+					System.out.println("Thnak you my friend i have upgraded your item");
+					validChoice = true;
+				}
+				else{
+					System.out.println("You do not have enough kubits for this upgrade my friend, either fight more rounds or visit the exchange to transfer your cash into kubits \n");					
+				}			
+			}
+			else{
+				System.out.println("Error: Please select the items available to upgrade");
+			}			
+		}							
 	}
 }

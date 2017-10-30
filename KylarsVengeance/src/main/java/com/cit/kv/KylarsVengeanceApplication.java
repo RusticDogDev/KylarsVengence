@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.cit.kv.service.HudService;
 import com.cit.kv.service.LoginService;
 import com.cit.kv.service.MenuService;
 import com.cit.kv.service.NewUserService;
@@ -19,9 +18,7 @@ public class KylarsVengeanceApplication implements CommandLineRunner{
 	@Autowired
 	private LoginService login;
 	@Autowired
-	private NewUserService newUser;
-	@Autowired
-	private HudService hudService;
+	private NewUserService newUser;		
 	@Autowired
 	private MenuService menuService;
 	private Boolean isLoggedIn;
@@ -39,8 +36,8 @@ public class KylarsVengeanceApplication implements CommandLineRunner{
 		isNewUser = Boolean.valueOf(userLoggedIn[2]);	
 		if(isNewUser)
 		{
-			newUser.runmenu(userLoggedIn[0]);
+			newUser.runNewUser(userLoggedIn[0]);
 		}
-		hudService.runHud(userLoggedIn[0]);	
+		menuService.runMenu(userLoggedIn[0]);
 	}
 }
