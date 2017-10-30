@@ -9,8 +9,8 @@ CREATE TABLE User (
 );
 
 CREATE TABLE ItemsOwned (   
-   itemId		BIGINT NULL,
    id			BIGINT NULL,
+   itemId		BIGINT NULL,
    PRIMARY KEY(id, itemId)
 );
 

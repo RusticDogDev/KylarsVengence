@@ -19,8 +19,8 @@ public class ItemsOwnedRepositoryImpl implements ItemsOwnedRepository{
 	private JdbcTemplate jdbc;
 		
 	private static final String SQL_INSERT = "insert into ItemsOwned (id, itemId) values (?, ?)";	
-	private static final String SQL_FIND_ALL_By_USER_ID = "select * from ItemsOwned order by id";
-	private static final String SQL_FIND_ALL_By_ITEM_ID = "select * from ItemsOwned order by itemId";
+	private static final String SQL_FIND_ALL_By_USER_ID = "select * from ItemsOwned where id =? order by id";
+	private static final String SQL_FIND_ALL_By_ITEM_ID = "select * from ItemsOwned where id =? order by itemId";
 	private static final String SQL_DELETE_ONE = "delete from ItemsOwned where itemId = ? And id =?";
 	
 	@Override
@@ -36,7 +36,6 @@ public class ItemsOwnedRepositoryImpl implements ItemsOwnedRepository{
 	@Override
 	public ItemsOwned save(ItemsOwned io) {		
 		int rows = jdbc.update(new PreparedStatementCreator(){
-
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(SQL_INSERT, new String[]{"id"});

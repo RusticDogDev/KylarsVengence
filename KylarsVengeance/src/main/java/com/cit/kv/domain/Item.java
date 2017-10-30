@@ -4,26 +4,26 @@ public class Item {
 	public enum ItemType
 	{
 		CloseRange,
-		LongRange,
 		Shield,
-		Armour
+		Armour,
+		LongRange
 	}
 		
 	private Long itemId;
 	private String itemType;
 	private int attack;
 	private int defence;
-	private int level;
+	private int itemLevel;
 	private String itemName;
 	private Long itemValue;
 	
-	public Item(Long itemId, String itemType, int attack, int defence, int level, String itemName, Long itemValue) {
+	public Item(Long itemId, int attack, int defence, int itemlevel, String itemType, String itemName, Long itemValue) {
 		super();
 		this.itemId = itemId;
 		this.itemType = itemType;
 		this.attack = attack;
 		this.defence = defence;
-		this.level = level;
+		this.itemLevel = itemlevel;
 		this.itemName = itemName;
 		this.itemValue = itemValue;	
 	}
@@ -68,12 +68,12 @@ public class Item {
 		this.defence = defence;
 	}
 
-	public int getLevel() {
-		return level;
+	public int getItemLevel() {
+		return itemLevel;
 	}
 
-	public void setLevel(int level) {
-		this.level = level;
+	public void setItemLevel(int itemLevel) {
+		this.itemLevel = itemLevel;
 	}	
 
 	public Long getItemValue() {
@@ -86,11 +86,11 @@ public class Item {
 	
 	@Override
 	public String toString() {
-		return "Item [itemId=" + itemId + 
-				", itemType=" + itemType + 
+		return "Item [itemId=" + itemId + 			
 				", attack=" + attack +  
 				", defence=" + defence + 
-				", level=" + level + 
+				", itemLevel=" + itemLevel + 
+				", itemType=" + itemType + 
 				", itemName=" + itemName + 
 				", itemValue=" + itemValue + "]";
 	}	

@@ -61,10 +61,10 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id 
-				+ ", userType=" + userType
+		return "User [id=" + id 				
 				+ ", userName=" + userName
 				+ ", password=" + password
+				+ ", userType=" + userType
 				+ ", level=" + level
 				+ ", balance=" + balance + "]";
 	}

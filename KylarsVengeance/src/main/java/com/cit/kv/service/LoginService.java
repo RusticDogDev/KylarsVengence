@@ -34,7 +34,7 @@ public class LoginService {
 			{
 				if(input == 0)
 				{
-					System.out.println("Do you wish to Login (1) or Sigin-up (2)?\n");
+					System.out.println("Do you wish to Login (1) or Sign-up (2)?\n");
 					input = keyboard.nextInt();
 					if(input >= MIN && input <= MAX)
 					{
@@ -87,8 +87,7 @@ public class LoginService {
 					System.out.println("Success: Your account has been created\n ");
 					userDetails[0] = userName;
 					userDetails[1] = pword;
-					userDetails[2] = "true";
-					keyboard.close();
+					userDetails[2] = "true";					
 					valid = true;
 				}
 			}			

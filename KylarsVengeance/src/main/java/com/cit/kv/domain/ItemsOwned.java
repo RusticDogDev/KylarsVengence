@@ -4,7 +4,7 @@ public class ItemsOwned {
 	private long itemId;
 	private long id;	
 	
-	public ItemsOwned(Long itemId, Long id){
+	public ItemsOwned(Long id, Long itemId){
 		super();
 		this.setItemId(itemId);
 		this.setId(id);
@@ -28,6 +28,6 @@ public class ItemsOwned {
 	
 	@Override
 	public String toString() {
-		return "itemsOwned [itemId=" + itemId + ", id=" + id +"]";
+		return "itemsOwned [id=" + id +", itemId=" + itemId + "]";
 	}
 }

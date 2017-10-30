@@ -21,7 +21,7 @@ public class UserRepositoryImpl implements UserRepository{
 	private JdbcTemplate jdbc;
 		
 	private static final String SQL_INSERT = "insert into User (id, userName, password, userType, level, balance) values (?, ?, ?, ?, ?, ?)";
-	private static final String SQL_UPDATE = "update User set userName=?, password=?, userType=?, level=?, balance =? where id=?";
+	private static final String SQL_UPDATE = "update User set userName=?, password=?, userType=?, level=?, balance=? where id=?";
 	private static final String SQL_FIND_ONE = "select * from User where id = ?";
 	private static final String SQL_FIND_ONE_UNAME = "select * from User where userName = ?";
 	private static final String SQL_FIND_ALL = "select * from User order by userType";	
