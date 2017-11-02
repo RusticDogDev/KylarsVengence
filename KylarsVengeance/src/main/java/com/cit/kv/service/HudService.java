@@ -36,7 +36,8 @@ public class HudService {
 		}
 		System.out.println("--- KYLAR’S VENGEANCE ---");
 		System.out.println("Player: \t"+ player.getUserName() + " the " + player.getUserType());
-		System.out.println("Player: \t"+ player.getBalance());
+		System.out.println("Level: \t\t"+ player.getLevel());
+		System.out.println("Balance: \t"+ player.getBalance());
 		Equipment = "Equipment: \t";
 		for(int i = 0; i < itemsList.size(); i++){
 			if(i == 0){

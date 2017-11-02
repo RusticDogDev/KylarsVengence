@@ -69,7 +69,7 @@ public class UserRepositoryImpl implements UserRepository{
 
 	@Override
 	public int update(User ur) {
-		return jdbc.update(SQL_UPDATE, ur.getId(), ur.getUserName(), ur.getPassword(), ur.getUserType(), ur.getLevel(), ur.getBalance());
+		return jdbc.update(SQL_UPDATE, ur.getUserName(), ur.getPassword(), ur.getUserType(), ur.getLevel(), ur.getBalance(), ur.getId());
 	}
 
 	@Override

@@ -93,7 +93,6 @@ public class NewUserService {
 		Thread.sleep(2000);
 		System.out.println("** You can buy and upgrade your equipment in the market if you have the kubits **\n");
 		Thread.sleep(2000);
-		System.out.println("** Fairwell " + player.getUserName() + " the " + player.getUserType() + ".. I'm sure you'll do us proud!! **\n");
-		keyboard.close();
+		System.out.println("** Fairwell " + player.getUserName() + " the " + player.getUserType() + ".. I'm sure you'll do us proud!! **\n");		
 	}			
 }

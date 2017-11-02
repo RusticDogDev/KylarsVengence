@@ -46,10 +46,10 @@ public class LoginService {
 							
 				}
 			}															
-			System.out.println("Please eneter your user name");							
+			System.out.println("Please enter your user name (At least 5 characters)");							
 			keyboard.nextLine();					
 			userName = keyboard.nextLine();	
-			System.out.println("Please enter your password");
+			System.out.println("Please enter your password (At least 8 characters including one number)");
 			pword = keyboard.nextLine();			
 			
 			allUsers = userRepo.findAll();				
@@ -61,8 +61,7 @@ public class LoginService {
 					{					
 						userDetails[0] = userName;
 						userDetails[1] = pword;
-						userDetails[2] = "false"; //Returning Customer
-						keyboard.close();
+						userDetails[2] = "false"; //Returning Customer						
 						valid = true;
 					}			
 				}
@@ -81,7 +80,7 @@ public class LoginService {
 			else{
 				if (userName.length() >= 5 && pword.length() >= 8 && pword.matches(".*\\d.*") )
 				{
-					System.out.println("Success: The username '" + userName + "' is available");
+					System.out.println("\nSuccess: The username '" + userName + "' is available");
 					User newUser = new User((long) 2, userName, pword, "", 0, (long)1000);
 					userRepo.save(newUser);
 					System.out.println("Success: Your account has been created\n ");

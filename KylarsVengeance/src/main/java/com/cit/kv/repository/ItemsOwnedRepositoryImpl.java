@@ -21,7 +21,7 @@ public class ItemsOwnedRepositoryImpl implements ItemsOwnedRepository{
 	private static final String SQL_INSERT = "insert into ItemsOwned (id, itemId) values (?, ?)";	
 	private static final String SQL_FIND_ALL_By_USER_ID = "select * from ItemsOwned where id =? order by id";
 	private static final String SQL_FIND_ALL_By_ITEM_ID = "select * from ItemsOwned where id =? order by itemId";
-	private static final String SQL_DELETE_ONE = "delete from ItemsOwned where itemId = ? And id =?";
+	private static final String SQL_DELETE_ONE = "delete from ItemsOwned where id = ? And itemId =?";
 	
 	@Override
 	public List<ItemsOwned> findAllByUser(Long id) {

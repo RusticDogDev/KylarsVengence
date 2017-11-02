@@ -21,10 +21,11 @@ public class ItemRepositoryImpl implements ItemRepository {
 	@Autowired
 	private JdbcTemplate jdbc;
 		
-	private static final String SQL_INSERT = "insert into Items (itemId, attack, defence, itemLevel, itemType, itemName, itemValue) values (?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String SQL_UPDATE = "update Items set attack=?, defence=?, itemLevel=?, itemType=?, itemName=?, itemValue where itemId=?";
+	private static final String SQL_INSERT = "insert into Items (itemId, attack, defence, itemLevel, itemType, itemName, itemValue) values (?, ?, ?, ?, ?, ?, ?)";
+	private static final String SQL_UPDATE = "update Items set attack=?, defence=?, itemLevel=?, itemType=?, itemName=?, itemValue=? where itemId=?";
 	private static final String SQL_FIND_ONE = "select * from Items where itemId=?";
 	private static final String SQL_FIND_ALL = "select * from Items order by itemType";	
+	private static final String SQL_FIND_ALL_BY_ITEM_TYPE = "select * from Items where itemType=?";	
 	private static final String SQL_DELETE_ONE = "delete from Items where itemId=?";
 
 	@Override
@@ -32,6 +33,11 @@ public class ItemRepositoryImpl implements ItemRepository {
 		return jdbc.query(SQL_FIND_ALL, new ItemRowMapper());	
 	}
 
+	@Override
+	public List<Item> findAllByItemType(String itemType) {
+		return jdbc.query(SQL_FIND_ALL_BY_ITEM_TYPE, new ItemRowMapper(), itemType);			
+	}
+	
 	@Override
 	public Item findOne(Long itemId) {
 		return jdbc.queryForObject(SQL_FIND_ONE, new ItemRowMapper(), itemId);	
@@ -65,7 +71,7 @@ public class ItemRepositoryImpl implements ItemRepository {
 
 	@Override
 	public int update(Item it) {
-		return jdbc.update(SQL_UPDATE, it.getItemId(), it.getAttack(), it.getDefence(), it.getItemLevel(), it.getItemName(), it.getItemValue());
+		return jdbc.update(SQL_UPDATE, it.getAttack(), it.getDefence(), it.getItemLevel(), it.getItemType(), it.getItemName(), it.getItemValue(), it.getItemId());
 	}	
 
 	@Override

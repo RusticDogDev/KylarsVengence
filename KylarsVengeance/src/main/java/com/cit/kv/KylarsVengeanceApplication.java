@@ -20,8 +20,7 @@ public class KylarsVengeanceApplication implements CommandLineRunner{
 	@Autowired
 	private NewUserService newUser;		
 	@Autowired
-	private MenuService menuService;
-	private Boolean isLoggedIn;
+	private MenuService menuService;	
 	private Boolean isNewUser;
 	
 	public static void main(String[] args) throws Exception {
@@ -31,8 +30,7 @@ public class KylarsVengeanceApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		String[] userLoggedIn = login.getlogindetails();
-		isLoggedIn = true;
+		String[] userLoggedIn = login.getlogindetails();		
 		isNewUser = Boolean.valueOf(userLoggedIn[2]);	
 		if(isNewUser)
 		{
